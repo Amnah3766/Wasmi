@@ -1,0 +1,29 @@
+/*
+ * Tailwind CSS v4, added without changing Wasmi's look:
+ *  - No Preflight (Tailwind's reset): the original page relies on browser defaults + its own CSS (app/wasmi.css).
+ *  - Utilities are generated only from app/ and components/.
+ *  - Brand tokens are exposed as Tailwind colours (bg-w-surface, text-w-muted, border-w-line, text-w-accent …),
+ *    always pointing at the same CSS variables, so light/dark mode keeps working.
+ * Tailwind sits in cascade layers, so the original unlayered CSS wins wherever both style the same property.
+ */
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+
+@source '../app';
+@source '../components';
+
+@theme {
+  --color-w-bg: var(--bg);
+  --color-w-surface: var(--surface);
+  --color-w-fg: var(--fg);
+  --color-w-muted: var(--muted);
+  --color-w-line: var(--line);
+  --color-w-accent: var(--accent);
+  --color-w-saffron: var(--saffron);
+  --color-w-danger: var(--danger);
+  --color-w-hero: var(--hero-bg);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}

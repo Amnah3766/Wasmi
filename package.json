@@ -1,0 +1,44 @@
+{
+  "name": "wasmi-store",
+  "private": true,
+  "version": "4.0.0",
+  "description": "وسمي Wasmi — Gulf-moment candles, perfumes and incense. Day 4: Next.js App Router + MongoDB Atlas + auth + orders.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3300",
+    "build": "next build",
+    "build:netlify": "next build --webpack",
+    "start": "next start -p 4300",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:live": "playwright test -c playwright.live.config.ts",
+    "seed": "node --env-file-if-exists=.env --env-file-if-exists=.env.local --import tsx scripts/seed.ts",
+    "db:check": "node --env-file-if-exists=.env --env-file-if-exists=.env.local --import tsx scripts/check-db.ts",
+    "db:report": "node --env-file-if-exists=.env --env-file-if-exists=.env.local --import tsx scripts/db-report.ts",
+    "images": "node --import tsx scripts/gen-images.ts"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.12.0",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3",
+    "vitest": "^3.2.7"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}
