@@ -1,0 +1,10 @@
+Wasmi - price edited directly in MongoDB Atlas shows after a refresh
+Run (UTC): 2026-11-08T08:56:24Z | server: next start (production build) on localhost:4300 | product: awal (تراب الوسمي)
+
+1) BEFORE  API /api/products/awal price = 9.500 د.ك | page /products/awal shows: 9.500 د.ك
+   db: Atlas edit applied: awal (تراب الوسمي) price 9.500 د.ك → 10.250 د.ك
+   db: Refresh the product page to see the price that now comes from the database.
+2) AFTER Atlas edit (just refresh)  API = 10.250 د.ك | page shows: 10.250 د.ك
+   db: Restored: awal (تراب الوسمي) price 10.250 د.ك → 9.500 د.ك
+   db: Refresh the product page to see the price that now comes from the database.
+3) RESTORED  API = 9.500 د.ك | page shows: 9.500 د.ك

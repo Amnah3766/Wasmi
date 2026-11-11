@@ -1,0 +1,13 @@
+Wasmi - live smoke E2E on https://wasmi-store.netlify.app (desktop 1366x860 + mobile Pixel 7). Read-only: no account created, no order placed. Console/page errors are collected and must be empty.
+Run: 2026-11-08T09:09:27.421Z | duration 46 s
+
+TOTAL: 8 passed, 0 failed, 0 skipped, 0 passed on retry
+
+PASS         [desktop] live-smoke.spec.ts > pages 200, products from the database, clean console  (34004 ms)
+PASS         [desktop] live-smoke.spec.ts > static assets are served (/_next/static 200)  (4151 ms)
+PASS         [desktop] live-smoke.spec.ts > status codes: 401 / 307 / 400 / 404  (2946 ms)
+PASS         [desktop] live-smoke.spec.ts > guest checkout asks to sign in  (3569 ms)
+PASS         [mobile] live-smoke.spec.ts > pages 200, products from the database, clean console  (27354 ms)
+PASS         [mobile] live-smoke.spec.ts > static assets are served (/_next/static 200)  (4390 ms)
+PASS         [mobile] live-smoke.spec.ts > status codes: 401 / 307 / 400 / 404  (2873 ms)
+PASS         [mobile] live-smoke.spec.ts > guest checkout asks to sign in  (3029 ms)

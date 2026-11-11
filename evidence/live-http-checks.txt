@@ -1,0 +1,41 @@
+Wasmi - live Netlify HTTP checks
+URL: https://wasmi-store.netlify.app
+Run (UTC): 2026-11-08T09:09:04.578Z
+Method: plain HTTPS requests from Node v24.18.0; redirects not followed; no account created, no order placed, no password typed.
+
+[PASS] 1.1   GET / | expected: 200 | actual: 200 · <title> وسمي Wasmi · 1706 ms
+[PASS] 1.2   GET /products | expected: 200 | actual: 200 · <title> المتجر · وسمي Wasmi · 528 ms
+[PASS] 1.3   GET /products/awal | expected: 200 | actual: 200 · <title> تراب الوسمي · وسمي Wasmi · 430 ms
+[PASS] 1.4   GET /products/ghaim | expected: 200 | actual: 200 · <title> عود كمبودي · وسمي Wasmi · 519 ms
+[PASS] 1.5   GET /finder | expected: 200 | actual: 200 · <title> اكتشف ريحتك · وسمي Wasmi · 297 ms
+[PASS] 1.6   GET /gift | expected: 200 | actual: 200 · <title> صندوق المواسم · وسمي Wasmi · 290 ms
+[PASS] 1.7   GET /favorites | expected: 200 | actual: 200 · <title> المفضلة · وسمي Wasmi · 413 ms
+[PASS] 1.8   GET /story | expected: 200 | actual: 200 · <title> قصتنا · وسمي Wasmi · 286 ms
+[PASS] 1.9   GET /brand | expected: 200 | actual: 200 · <title> الهوية · وسمي Wasmi · 282 ms
+[PASS] 1.10  GET /contact | expected: 200 | actual: 200 · <title> تواصل · وسمي Wasmi · 289 ms
+[PASS] 1.11  GET /cart | expected: 200 | actual: 200 · <title> السلة · وسمي Wasmi · 282 ms
+[PASS] 1.12  GET /checkout | expected: 200 | actual: 200 · <title> إتمام الطلب · وسمي Wasmi · 294 ms
+[PASS] 1.13  GET /login | expected: 200 | actual: 200 · <title> تسجيل الدخول · وسمي Wasmi · 335 ms
+[PASS] 1.14  GET /signup | expected: 200 | actual: 200 · <title> حساب جديد · وسمي Wasmi · 366 ms
+[PASS] 2.1   GET /api/products (from MongoDB) | expected: 200 + 12 products | actual: 200 · 12 products · e.g. awal = تراب الوسمي 9.500 د.ك
+[PASS] 2.2   /products page renders the DB products | expected: 12/12 names from /api/products in the page | actual: 12/12
+[PASS] 2.3   GET /api/health (database reachable) | expected: 200 {db:"up"} | actual: 200 {"ok":true,"db":"up"}
+[PASS] 3.1   /_next/static JS + CSS files | expected: all 200 | actual: 23/23 returned 200
+[PASS] 3.2   GET /favicon.svg | expected: 200 | actual: 200
+[PASS] 3.2   GET /images/products/awal.svg | expected: 200 | actual: 200
+[PASS] 4.1   GET /api/orders (signed out) | expected: 401 | actual: 401 "سجّل دخولك عشان تشوف طلباتك"
+[PASS] 4.2   GET /api/auth/me (signed out) | expected: 401 | actual: 401 "مو مسجّل دخول"
+[PASS] 4.3   POST /api/orders (signed out) | expected: 401 | actual: 401 "سجّل دخولك عشان ينحفظ طلبك"
+[PASS] 4.4   GET /api/orders/<id> (signed out) | expected: 401 | actual: 401 "سجّل دخولك عشان تشوف الطلب"
+[PASS] 4.5   GET /orders (protected page, signed out) | expected: 307 | actual: 307 → /login?next=%2Forders
+[PASS] 4.6   GET /orders/<id> (protected page, signed out) | expected: 307 | actual: 307 → /login?next=%2Forders%2F0123456789abcdef01234567
+[PASS] 4.7   POST /api/auth/signup with invalid fields (nothing created) | expected: 400 | actual: 400 {"name":"required","email":"invalid","password":"tooShort"}
+[PASS] 4.8   POST /api/auth/login with empty body | expected: 400 | actual: 400 {"email":"required","password":"required"}
+[PASS] 4.9   POST /api/auth/login with malformed JSON | expected: 400 | actual: 400 "البيانات المرسلة مو صحيحة"
+[PASS] 4.10  GET /products/no-such-scent | expected: 404 | actual: 404
+[PASS] 4.11  GET /api/products/no-such-scent | expected: 404 | actual: 404 "المنتج مو موجود"
+[PASS] 4.12  GET /api/products/no-such-scent/reviews | expected: 404 | actual: 404 "المنتج مو موجود"
+[PASS] 5.1   Security headers on pages | expected: nosniff + referrer-policy | actual: strict-transport-security: max-age=31536000; includeSubDomains; preload · x-content-type-options: nosniff · referrer-policy: strict-origin-when-cross-origin · x-frame-options: SAMEORIGIN
+[PASS] 5.2   Session cookie attributes (logout response, no account needed) | expected: HttpOnly; SameSite=Lax; Secure | actual: wasmi_session=<empty>; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=lax
+
+RESULT: 34/34 PASS

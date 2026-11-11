@@ -1,0 +1,6 @@
+[db] connect attempt 1/3 failed: Error: querySrv ECONNREFUSED _mongodb._tcp.<cluster-host>
+Database "wasmi" on MongoDB Atlas
+products: 12 · users: 48 · orders: 14 · reviews: 24 (24 samples)
+every passwordHash is bcrypt cost 12 ($2b$12$, 60 chars): YES
+hash prefixes: $2b$12$…, $2b$12$…, $2b$12$…
+wrote db-report.html (newest 50 users/orders; emails masked: e.g. f***@example.test)

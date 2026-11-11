@@ -1,0 +1,22 @@
+
+ RUN  v3.2.7 C:/Users/GAMING/Wasmi
+
+ ✓ lib/safeNext.test.ts (5 tests) 6ms
+ ✓ lib/shop/pricing.test.ts (16 tests) 7ms
+ ✓ lib/time.test.ts (7 tests) 13ms
+ ✓ scripts/report-html.test.ts (6 tests) 3ms
+ ✓ lib/validators.test.ts (20 tests) 10ms
+ ✓ lib/orderPricing.test.ts (12 tests) 5ms
+ ✓ lib/session.test.ts (8 tests) 8ms
+ ✓ lib/errors.test.ts (7 tests) 9ms
+ ✓ scripts/seed/seed-data.test.ts (11 tests) 30ms
+ ✓ lib/models.test.ts (6 tests) 14ms
+ ✓ lib/password.test.ts (3 tests) 1499ms
+   ✓ password hashing (bcryptjs, cost 12) > salts every hash and verifies only the right password  685ms
+   ✓ password hashing (bcryptjs, cost 12) > returns false for a missing account (after a dummy comparison)  576ms
+
+ Test Files  11 passed (11)
+      Tests  101 passed (101)
+   Start at  11:51:52
+   Duration  2.15s (transform 553ms, setup 0ms, collect 2.75s, tests 1.60s, environment 2ms, prepare 2.87s)
+
