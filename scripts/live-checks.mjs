@@ -33,7 +33,7 @@ function check(id, what, ok, expected, actual) {
 }
 
 const started = new Date().toISOString();
-const pages = ['/', '/products', '/products/awal', '/products/ghaim', '/finder', '/gift', '/favorites', '/story', '/brand', '/contact', '/cart', '/checkout', '/login', '/signup'];
+const pages = ['/', '/products', '/products/awal', '/products/ghaim', '/finder', '/gift', '/favorites', '/story', '/brand', '/contact', '/cart', '/checkout', '/checkout/cancel', '/login', '/signup'];
 const htmlByPath = new Map();
 let n = 0;
 for (const p of pages) {
@@ -83,18 +83,25 @@ const codes = [
   ['4.10', 'GET /products/no-such-scent', () => get(BASE + '/products/no-such-scent'), 404],
   ['4.11', 'GET /api/products/no-such-scent', () => get(BASE + '/api/products/no-such-scent'), 404],
   ['4.12', 'GET /api/products/no-such-scent/reviews', () => get(BASE + '/api/products/no-such-scent/reviews'), 404],
+  ['4.13', 'POST /api/checkout (signed out)', () => get(BASE + '/api/checkout', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' }), 401],
+  ['4.14', 'POST /api/checkout from another site (Origin: evil.example)', () => get(BASE + '/api/checkout', { method: 'POST', headers: { 'content-type': 'application/json', origin: 'https://evil.example' }, body: '{}' }), 403],
+  ['4.15', 'POST /api/checkout/confirm (signed out)', () => get(BASE + '/api/checkout/confirm', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{"sessionId":"cs_test_a1B2c3D4e5F6g7H8i9"}' }), 401],
+  ['4.16', 'POST /api/stripe/webhook without a valid signature', () => get(BASE + '/api/stripe/webhook', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' }), null],
+  ['4.17', 'GET /checkout/success (protected page, signed out)', () => get(BASE + '/checkout/success?session_id=cs_test_a1B2c3D4e5F6g7H8i9'), 307],
 ];
 for (const [id, what, fn, want] of codes) {
   const r = await fn();
   let extra = '';
-  if (want === 307) extra = ` → ${r.headers.get('location')}`;
+  if (want === 307 || r.status === 307) extra = ` → ${r.headers.get('location')}`;
   else {
     try {
       const j = JSON.parse(r.body);
       extra = ` ${JSON.stringify(j.fields || j.error || '').slice(0, 90)}`;
     } catch {}
   }
-  check(id, what, r.status === want, String(want), `${r.status}${extra}`);
+  // null = webhook: 400 when a signing secret is set (bad signature), 503 when it is not configured.
+  const ok = want === null ? r.status === 400 || r.status === 503 : r.status === want;
+  check(id, what, ok, want === null ? '400 (secret set) or 503 (not configured)' : String(want), `${r.status}${extra}`);
 }
 
 const h = (await get(BASE + '/')).headers;

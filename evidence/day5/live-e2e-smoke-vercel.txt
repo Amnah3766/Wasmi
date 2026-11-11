@@ -1,0 +1,13 @@
+Wasmi Day 5 - live smoke E2E on https://wasmi.vercel.app (desktop + mobile Pixel 7). Read-only: no account, no order, no payment. Console/page errors must be empty.
+Run: 2026-11-11T08:04:08.223Z | duration 56 s
+
+TOTAL: 8 passed, 0 failed, 0 skipped, 0 passed on retry
+
+PASS         [desktop] live-smoke.spec.ts > pages 200, products from the database, clean console  (41972 ms)
+PASS         [desktop] live-smoke.spec.ts > static assets are served (/_next/static 200)  (3438 ms)
+PASS         [desktop] live-smoke.spec.ts > status codes: 401 / 307 / 400 / 404  (4244 ms)
+PASS         [desktop] live-smoke.spec.ts > guest checkout asks to sign in  (2744 ms)
+PASS         [mobile] live-smoke.spec.ts > pages 200, products from the database, clean console  (41902 ms)
+PASS         [mobile] live-smoke.spec.ts > static assets are served (/_next/static 200)  (2868 ms)
+PASS         [mobile] live-smoke.spec.ts > status codes: 401 / 307 / 400 / 404  (3100 ms)
+PASS         [mobile] live-smoke.spec.ts > guest checkout asks to sign in  (2484 ms)
